@@ -1,0 +1,72 @@
+ 
+
+    <!-- action needs servlet path -->
+    <!-- method get lets us use doGet in servlet -->
+    <!--
+        productID
+        quantity
+        firstName
+        lastName
+        phoneNumber
+        shippingAddress
+        deliveryMethod
+        creditCard
+     -->
+    <!-- the ./hello is defined in the HelloServlet.java value topline -->
+    <div class="product-page-main-body">
+        <div class="purchase-form">
+    <form action="./push" method="post">
+        <!-- taken from julez product-page -->
+        <!-- TODO: Product ID -->
+        <label for="productID">Product ID</label><br>
+        <input type="text" id="productID" name="productID" required><br>
+     
+        <!-- TODO: Quantity -->
+        <label for="quantity">Quantity</label><br>
+        <input type="number" id="quantity" name="quantity" required><br>
+     
+        <!-- TODO: First name -->
+        <label for="firstName">First name</label><br>
+        <input type="text" id="firstName" name="firstName" required><br>
+     
+        <!-- TODO: Last name -->
+        <label for="lastName">Last name</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+     
+        <!-- TODO: Phone number -->
+        <!-- MADE THIS TEXT FOR TEST PURPOSES -->
+        <label for="phoneNumber">Phone Number</label><br>
+        <!-- <input type="tel" id="phoneNumber" name="phoneNumber"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        required> -->
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <br>
+     
+        <!-- TODO: Shipping address -->
+        <label for="shipingAddress">Shipping Address</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+     
+        <!-- TODO: Shipping method (overnight, 2-day expedited, 6-day groudned) -->
+        <label for="deliveryMethod">Delivery method</label><br>
+     
+        <input type="radio" id="overnight" name="deliveryMethod" value="overnight">
+        <label for="overnight">Overnight</label><br>
+        <input type="radio" id="expedited" name="deliveryMethod" value="expedited">
+        <label for="expedited">2-day expedited</label><br>
+        <input type="radio" id="grounded" name="deliveryMethod" value="grounded">
+        <label for="grounded">6-day grounded</label><br>
+     
+        <!-- TODO: Credit card number -->
+        <label for="creditCard">Credit card number</label><br>
+        <input type="number" id="creditCard" name="creditCard"><br>  
+       
+       
+     
+        <button type="submit" value="Submit" class="button submit-btn"> Submit !</button>
+     
+    </form>
+     
+    <a href="./data">Submit the Form</a>
+</div>
+</div>
+     
+    
