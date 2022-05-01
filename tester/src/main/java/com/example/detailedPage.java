@@ -28,7 +28,7 @@ public class detailedPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection con;
+        // Connection con;
         final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
        
         Statement stmt = null;
@@ -37,7 +37,7 @@ public class detailedPage extends HttpServlet {
         try{
             Class.forName(JDBC_DRIVER);
             // testpa is the database name!
-            con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");         
+            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");         
             stmt = con.createStatement();
             String sql = "SELECT * FROM frog_list WHERE id = '"+req.getParameter("param1")+"'";
             ResultSet rs = stmt.executeQuery(sql);
