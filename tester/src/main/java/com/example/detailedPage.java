@@ -52,12 +52,14 @@ public class detailedPage extends HttpServlet {
             double price = 0;
             String image_path = "";
             String description = "";
+            int f_id = 0;
             while (rs.next())
             {
                 name = rs.getString("name");
                 price = rs.getFloat("price");
                 image_path = rs.getString("image");
                 description = rs.getString("description");
+                f_id = rs.getInt("id");
                 // writer.println(name);
             }
             // param1 reperesents frog_id
@@ -86,8 +88,8 @@ public class detailedPage extends HttpServlet {
 
             writer.println("    <p >"+description+"</p>");
             
-            writer.println("<a href='form'><button>Fill out Purchase Form</button></a>");
-
+            writer.println("<a href='cart?prod="+f_id+"'><button>Add to Cart</button></a>");
+            
             writer.println("</div>");
 
             writer.println("</div>");

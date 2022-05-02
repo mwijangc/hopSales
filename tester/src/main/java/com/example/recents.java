@@ -18,27 +18,46 @@ import java.sql.SQLException;
 
 @WebServlet(name = "recent", value = "/recent")
 public class recents extends HttpServlet {
+    Connection con;
+    final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
     @Override
     public void init() throws ServletException {
+        
         super.init();
+
+        try{
+            Class.forName(JDBC_DRIVER);
+            // testpa is the database name!
+            con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            
+        }
+        catch(ClassNotFoundException e){
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        Statement stmt = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            // Class.forName("com.mysql.jdbc.Driver");
             // testpa is the database name!
-            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
-            Statement stmt = con.createStatement();
+            // con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            
             //email is the name of the table!            
+            stmt = con.createStatement();
             HttpSession session = req.getSession();
             String currUser = (String)session.getAttribute("currentUser");
             String sql = "SELECT * FROM users WHERE username = '"+currUser+"'";
             ResultSet rs = stmt.executeQuery(sql);
 
-            PrintWriter writer = resp.getWriter();
-            writer.println("<html> <body>");
+            
+            // writer.println("<html> <body>");
             // until the rows exist/stop existing lol
             // TODO
             // CREATE PRODUCT CARDS WITH THE CURRENT USERS ORDER DATA
@@ -126,14 +145,24 @@ public class recents extends HttpServlet {
             }
          
           
-            writer.println("</body> </html> ");
+            // writer.println("</body> </html> ");
         }
-        catch(ClassNotFoundException e){
-            e.printStackTrace();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        catch(SQLException se)
+        {
+            //Handle errors for JDBC
+            // writer.println(se);
         }
+        catch(Exception e){
+            //Handle any other type of error
+            // writer.println(e);
+        }finally{
+            //finally block used to close resources
+            try{
+            if(stmt!=null)
+                stmt.close();
+            }catch(SQLException ignore) {}// nothing we can do
+        } //end try
+       
 
     }
 }
