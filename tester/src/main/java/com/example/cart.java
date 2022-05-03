@@ -139,11 +139,11 @@ public class cart extends HttpServlet {
             //// BEGIN FORM
             writer.println("<div class='product-page-main-body'>");
             writer.println("<div class='purchase-form'>");
-            writer.println("<form action='./push' method='post'>");
+            writer.println("<form action='./orderPush' method='post'>");
             
             
             writer.println("<label for='cartList'>Cart Items</label><br>");
-            writer.println("<input type='text' id='cartList' name='productID' value='"+cart_holder+"' required><br>");
+            writer.println("<input type='text' id='cartList' name='cartList' value='"+cart_holder+"' required><br>");
         
             
             //deleted quantity
