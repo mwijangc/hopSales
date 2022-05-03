@@ -84,7 +84,7 @@ public class cart extends HttpServlet {
             }
 
             writer.println("<p> Cart is currently :"+ items +", recently added "+f_id+" </p>");
-
+            String cart_holder = items+"";
             String sql = "SELECT * FROM frog_list";
             ResultSet rs = stmt.executeQuery(sql);
             int rowCount = -1;
@@ -102,7 +102,7 @@ public class cart extends HttpServlet {
                     {
                         writer.println("<tr>");
                     }          
-                    writer.println("<td> <div class='zoom'>");
+                    writer.println("<td>");
                     // then an A href that rq FORWARDS to the product page?
                     writer.println("<a href='details?param1="+rs.getString("id")+"'>");
                     
@@ -120,7 +120,7 @@ public class cart extends HttpServlet {
                     writer.println("</div>");
                     writer.println("</a>");
                     //ending a href
-                    writer.println("</div>");
+                    // writer.println("</div>"); originally for zoom
                     
                     
                     writer.println("</td>");
@@ -136,7 +136,60 @@ public class cart extends HttpServlet {
             writer.println("</table>");
             writer.println("</div>");
             writer.println("</div>");
+            //// BEGIN FORM
+            writer.println("<div class='product-page-main-body'>");
+            writer.println("<div class='purchase-form'>");
+            writer.println("<form action='./push' method='post'>");
             
+            
+            writer.println("<label for='cartList'>Cart Items</label><br>");
+            writer.println("<input type='text' id='cartList' name='productID' value='"+cart_holder+"' required><br>");
+        
+            
+            //deleted quantity
+        
+            
+            writer.println("<label for='firstName'>First name</label><br>");
+            writer.println("<input type='text' id='firstName' name='firstName' required><br>");
+        
+            
+            writer.println("<label for='lastName'>Last name</label><br>");
+            writer.println("<input type='text' id='lastName' name='lastName' required><br>");
+        
+            
+            
+            writer.println("<label for='phoneNumber'>Phone Number</label><br>");
+            
+            writer.println("<input type='text' id='phoneNumber' name='phoneNumber' required>");
+            writer.println("<br>     ");
+            
+            writer.println("<label for='shipingAddress'>Shipping Address</label><br>");
+            writer.println("<input type='text' id='lastName' name='lastName' required><br>");
+        
+            
+            writer.println("<label for='deliveryMethod'>Delivery method</label><br>");
+        
+            writer.println("<input type='radio' id='overnight' name='deliveryMethod' value='overnight'>");
+            writer.println("<label for='overnight'>Overnight</label><br>");
+            writer.println("<input type='radio' id='expedited' name='deliveryMethod' value='expedited'>");
+            writer.println("<label for='expedited'>2-day expedited</label><br>");
+            writer.println("<input type='radio' id='grounded' name='deliveryMethod' value='grounded'>");
+            writer.println("<label for='grounded'>6-day grounded</label><br>");
+        
+            
+            writer.println("<label for='creditCard'>Credit card number</label><br>");
+            writer.println("<input type='number' id='creditCard' name='creditCard'><br>  ");
+        
+        
+        
+            writer.println("<button type='submit' value='Submit' class='button submit-btn'> Submit !</button>");
+        
+            writer.println("</form>");
+        
+            writer.println("   <a href='./data'>Submit the Form</a>");
+            writer.println("</div>");
+            writer.println("</div>");
+        
 
 
 
@@ -160,8 +213,10 @@ public class cart extends HttpServlet {
         } //end try
 
 
-        RequestDispatcher rd = req.getRequestDispatcher("form.html");
-        rd.include(req,resp);
+        // RequestDispatcher rd = req.getRequestDispatcher("form.html");
+        // rd.include(req,resp);
+        
+    
         writer.println("</body> </html> ");
     }
 }
