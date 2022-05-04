@@ -7,11 +7,14 @@ We implemented a navigation bar at the top of the screen to navigate between pag
 ## Requirements
 
 ##1.
+The homepage is navigated to via the logo and overall is also the 'entrypoint'.
+
 To satisfy a user session, the default user "DefaultAndy" is logged into the page automatically (will change eventually). Using data about defaultAndy in the MySql tables, we display using the the cards.java and recents.java servlet. Recent.java implements a 5 star rating system (that visually always starts as 1 star) using the <input type='range'> model. The handling of pushing this rating to the backend orders table is via submit.java. The increments are in half-steps and are pushed to the database once the user clicks the 'send' button.
 
 Overall home.java acts as the index.jsp and uses include to "build" the blocks of the page.
 
 ##2.
+The detailed pages are navigated too by clicking the 'cards' at the top of the home page.
     
 Home.java, the main page servlet lists the products as clickable-cards using card.java. These cards then dynamically call
 ```writer.println("<a href='details?param1="+rs.getString("id")+"'>");```
@@ -20,13 +23,14 @@ This page also uses frog_id to add to the current sessions cart using the cart.j
 
 
 ##3. 
+The 'checkout' form is combined with the cart, and can be viewed by clicking cart in the nav. 
 
 Generally the form now exists on the same page as the cart, cart.java. 
 Cart.java dynamically visualizes the users cart along with a quantity of items and the total price. The form validates loosely for numbers, and evaluates phonenumbers loosely as text as well. Specifics on credit card input are also limited to checking for numbers.
 
 
 ##4. 
-
+The 'checkout' page is combined with the cart, and can be viewed by clicking cart in the nav.
 The checkout page is combined with the cart.java visualization. The relevant information is in a form within cart.java and is pushed to the backend via formPusher.java and visually confirmed via orderDetails.java.
 
 ##5. [Extra credit] Deploy your website on UCI openlab or other cloud services such as AWS,  (Links to an external site.)or Google Cloud (Links to an external site.)
