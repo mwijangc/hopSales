@@ -105,7 +105,7 @@ public class cart extends HttpServlet {
             writer.println("<div class='product-main-body'> ");
             writer.println("<div class='product-table'>");
             writer.println("<table>");
-            
+            double total = 0;
             while(rs.next())
             {
                 
@@ -136,7 +136,7 @@ public class cart extends HttpServlet {
                     //ending a href
                     // writer.println("</div>"); originally for zoom
                     
-                    
+                    total+= rs.getFloat("price")*(Collections.frequency(items,rs.getInt("id")));
                     writer.println("</td>");
 
                     if(rowCount%5 == 0 && (rowCount != 0 && rowCount!= 5))
@@ -165,7 +165,7 @@ public class cart extends HttpServlet {
             writer.println("<div class='purchase-form'>");
             writer.println("<form action='./push' method='post'>");
             
-            
+            writer.println("<h3>Total price of cart: $"+total+"</h3>");
             writer.println("<label for='cartList'>Cart Items</label><br>");
             writer.println("<input type='text' id='cartList' name='cartList' value='"+cart_holder+"' required><br>");
         
