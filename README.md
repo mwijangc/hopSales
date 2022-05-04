@@ -39,6 +39,11 @@ Include the URL of your deployed website in the readme file of your submission
 
     This was not done/implemented by our team.
 
+
+## SQL Tables
+
+visualized and sampled in a pdf, and can be imported via mySql with the .sql self contained data file.
+
 ## Group Members
 
 Michael Wijangco
