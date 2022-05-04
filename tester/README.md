@@ -44,3 +44,8 @@ Include the URL of your deployed website in the readme file of your submission
 Michael Wijangco
 Becky Dinh
 Jules Labador
+
+
+## SQL Tables
+
+visualized and sampled in a pdf, and can be imported via mySql with the .sql self contained data file.
