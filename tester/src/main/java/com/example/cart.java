@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.Statement;
 
 import java.sql.SQLException;
@@ -68,12 +68,14 @@ public class cart extends HttpServlet {
             rd.include(req, resp);
             HttpSession session = req.getSession();
             ArrayList<Integer> items = new ArrayList<Integer>();
-
-            int f_id = Integer.parseInt(req.getParameter("prod"));
-
+            int f_id = 0;
+            if(req.getParameter("prod") != null )
+            {
+                f_id = Integer.parseInt(req.getParameter("prod"));
+            }
             // if no cart
             //try to use arraylist for cart
-            if(session.getAttribute("cart") == null)
+            if(session.getAttribute("cart") == null && f_id !=0)
             {
                 //add to items the items id.
                 items.add(f_id);
@@ -81,12 +83,20 @@ public class cart extends HttpServlet {
             }
             else
             {
-                items = (ArrayList<Integer>)session.getAttribute("cart");
-                items.add(f_id);
-                session.setAttribute("cart",items);
+                if(f_id !=0)
+                {
+                    items = (ArrayList<Integer>)session.getAttribute("cart");
+                    items.add(f_id);
+                    session.setAttribute("cart",items);
+                }
             }
-
-            writer.println("<p> Cart is currently :"+ items +", recently added "+f_id+" </p>");
+            if(f_id > 0)
+            {
+                writer.println("<p> Cart is currently :"+ items +", recently added "+f_id+" </p>");
+            }
+            else{
+                items = (ArrayList<Integer>)session.getAttribute("cart");
+            }
             String cart_holder = items+"";
             String sql = "SELECT * FROM frog_list";
             ResultSet rs = stmt.executeQuery(sql);
@@ -170,7 +180,8 @@ public class cart extends HttpServlet {
             writer.println("<label for='lastName'>Last name</label><br>");
             writer.println("<input type='text' id='lastName' name='lastName' required><br>");
         
-            
+            writer.println("<label for='email'>Email</label><br>");
+            writer.println("<input type='text' id='email' name='email' required><br>");
             
             writer.println("<label for='phoneNumber'>Phone Number</label><br>");
             
@@ -193,8 +204,10 @@ public class cart extends HttpServlet {
             
             writer.println("<label for='creditCard'>Credit card number</label><br>");
             writer.println("<input type='number' id='creditCard' name='creditCard'><br>  ");
-        
-        
+            writer.println("<label for='CVV'>CVV</label><br>");
+            writer.println("<input type='number' id='CVV' name='CVV'><br>  ");
+            writer.println("<label for='expiryDate'>Expiry Date</label><br>");
+            writer.println("<input type='month' id='expiryDate' name='expiryDate'><br>  ");
         
             writer.println("<button type='submit' value='Submit' class='button submit-btn'> Place Order</button>");
         

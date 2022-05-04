@@ -1,6 +1,6 @@
 package com.example;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +47,7 @@ public class recents extends HttpServlet {
         try{
             // Class.forName("com.mysql.jdbc.Driver");
             // testpa is the database name!
-            // con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
             
             //email is the name of the table!            
             stmt = con.createStatement();
@@ -108,6 +108,10 @@ public class recents extends HttpServlet {
                     writer.println("<p align='center'>$"+price+"</p>");
                     // RequestDispatcher rd = req.getRequestDispatcher("rating.html");
                     // rd.include(req,resp);
+
+                    // CURRENTLY
+                    // default set of the stars is 1, doesnt show "past ratings" or an active rating.
+                    // easier with REACT
                     writer.println(" <form action='./submit' method='get'>");
                     writer.println("<label class='rating-label' >");
                     writer.println("<input type='hidden' name='frog_id' value='"+frog_id+"'></input>");
@@ -129,8 +133,7 @@ public class recents extends HttpServlet {
                     //ending a href
                     writer.println("</div>");
                     writer.println("</td>");
-                    //   TOofdododododo
-                    // add the stars
+             
 
                     if(rowCount%5 == 0 && (rowCount != 0 && rowCount!= 5))
                     {

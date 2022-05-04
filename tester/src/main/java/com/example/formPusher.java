@@ -14,13 +14,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
+
 
 import java.sql.SQLException;
-import java.sql.ResultSet;
+
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.UUID;
 
 import com.google.gson.Gson; 
@@ -71,13 +71,11 @@ public class formPusher extends HttpServlet {
         writer.println("<nav class='navbar' id='navBar'>");
         writer.println("<a class ='navlink navbarLogo' href='/tester'>");
         writer.println(" <img height = '25px' width='25px' src='images/fwog_logo.svg'> </a>");
-        writer.println("<a class='navlink' href='form' action='form'>");
-        writer.println("Form");
-    writer.println("</a>");
-    writer.println("<a class='navlink' href='products.html'>    ");
-    writer.println("Frogs");
-    writer.println("</a>");           
-    writer.println("</nav> </header>");
+        writer.println("<a class='navlink' href='cart' >");
+        writer.println("Cart");
+        writer.println("</a>");
+                  
+        writer.println("</nav> </header>");
         // String name = req.getParameter("name");
         // String email = req.getParameter("email");
         // writer.println("<p>Name: "+ name + " Email: " + email+"</p>");
@@ -92,7 +90,7 @@ public class formPusher extends HttpServlet {
             // testpa is the database name!
             Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
             // https://stackoverflow.com/questions/24616174/how-to-convert-arraylist-to-json-object
-            PreparedStatement ztmt = con.prepareStatement("INSERT INTO customerorders VALUES (?,?,?,?,?,?,?,?)");
+            PreparedStatement ztmt = con.prepareStatement("INSERT INTO customerorders VALUES (?,?,?,?,?,?,?,?,?)");
             // stmt.setInt(1, Integer.valueOf(req.getParameter("productID")));
             // added maven dependency for gson
             HttpSession session = req.getSession();
@@ -106,6 +104,7 @@ public class formPusher extends HttpServlet {
             ztmt.setString(6, req.getParameter("shippingAddress"));
             ztmt.setString(7, req.getParameter("deliveryMethod"));
             ztmt.setString(8, req.getParameter("creditCard"));
+            ztmt.setString(9, req.getParameter("email"));
             //get the (generate an order id num) username from session, the id of the item from getParam, and the rating from input getParam,
             // stmt.setString(2, req.getParameter("firstName"));
             // stmt.setString(3, req.getParameter("lastName"));

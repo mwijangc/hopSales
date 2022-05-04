@@ -1,6 +1,6 @@
 package com.example;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 @WebServlet(name = "submit", value = "/submit")
@@ -36,11 +36,10 @@ public class submit extends HttpServlet {
         writer.println("<nav class='navbar' id='navBar'>");
         writer.println("<a class ='navlink navbarLogo' href='/tester'>");
         writer.println(" <img height = '25px' width='25px' src='images/fwog_logo.svg'> </a>");
-        writer.println("<a class='navlink' href='form' action='form'>");
-        writer.println("Form");
+        writer.println("<a class='navlink' href='cart' >");
+        writer.println("Cart");
         writer.println("</a>");
-        writer.println("<a class='navlink' href='products.html'>    ");
-        writer.println("Frogs");
+        
         writer.println("</a>");           
         writer.println("</nav> </header>");
         // writer.println("<html>");
