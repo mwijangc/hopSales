@@ -44,14 +44,16 @@ public class orderDetails extends HttpServlet {
             
             // ResultSet rs = stmt.executeQuery(sql);
             
-            writer.println("<html> ");
-            String cssLink=" <link rel='stylesheet' href='index.css'>";
-            writer.println("<head><title>Form</title>"+cssLink+"</head>");            
-            writer.println("<body>");
-            RequestDispatcher rd = req.getRequestDispatcher("nav.html");
-            rd.include(req, resp);
+            // writer.println("<html> ");
+            
+            // String cssLink=" <link rel='stylesheet' href='index.css'>";
+            // writer.println("<head><title>Form</title>"+cssLink+"</head>");            
+            // writer.println("<body>");
+            // RequestDispatcher rd = req.getRequestDispatcher("nav.html");
+            // rd.include(req, resp);
             HttpSession session = req.getSession();
-            writer.println("ordered from" +req.getParameter("cartList"));
+            // writer.println("ordered from" +req.getParameter("cartList"));
+            
             String sql = "SELECT * FROM frog_list";
             ResultSet rs = stmt.executeQuery(sql);
             int rowCount = -1;
@@ -60,6 +62,7 @@ public class orderDetails extends HttpServlet {
             writer.println("<table>");
             ArrayList<Integer> items = new ArrayList<Integer>();
             items =  (ArrayList<Integer>)session.getAttribute("cart");
+            double total = 0;
             while(rs.next())
             {
                 
@@ -89,8 +92,8 @@ public class orderDetails extends HttpServlet {
                     writer.println("</a>");
                     //ending a href
                     // writer.println("</div>"); originally for zoom
-                    
-                    
+                    // collection quantity
+                    total+= rs.getFloat("price")*(Collections.frequency(items,rs.getInt("id")));
                     writer.println("</td>");
 
                     if(rowCount%5 == 0 && (rowCount != 0 && rowCount!= 5))
@@ -103,9 +106,10 @@ public class orderDetails extends HttpServlet {
             }
             writer.println("</table>");
             writer.println("</div>");
+            writer.println("<h3>Total is : $"+total+"! </h3>");
             writer.println("</div>");
-    
-            writer.println("</body> </html> ");
+            
+            // writer.println("</body> </html> ");
             stmt.close();
             con.close();
            
@@ -116,11 +120,11 @@ public class orderDetails extends HttpServlet {
         catch(SQLException se)
         {
             //Handle errors for JDBC
-            writer.println(se);
+            // writer.println(se);
         }
         catch(Exception e){
             //Handle any other type of error
-            writer.println(e);
+            // writer.println(e);
         }finally{
             //finally block used to close resources
             try{

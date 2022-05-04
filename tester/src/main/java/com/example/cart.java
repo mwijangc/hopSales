@@ -22,6 +22,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.google.gson.Gson; 
+
+
 // the /push is put into the form action!
 @WebServlet(name = "cart", value = "/cart")
 public class cart extends HttpServlet {
@@ -88,6 +91,7 @@ public class cart extends HttpServlet {
             String sql = "SELECT * FROM frog_list";
             ResultSet rs = stmt.executeQuery(sql);
             int rowCount = -1;
+            
             writer.println("<div class='product-main-body'> ");
             writer.println("<div class='product-table'>");
             writer.println("<table>");
@@ -136,10 +140,20 @@ public class cart extends HttpServlet {
             writer.println("</table>");
             writer.println("</div>");
             writer.println("</div>");
+
+            // id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+            // cartItems JSON COMMENT 'cartItems',
+            // firstName VARCHAR(255) COMMENT 'firstname',
+            // lastName VARCHAR(255) COMMENT 'lastname',
+            // phoneNumber VARCHAR(255) COMMENT 'phoneNumber',
+            // shippingAddress VARCHAR(255) COMMENT 'shipping',
+            // deliveryMethod VARCHAR(255) COMMENT '3options',
+            // creditCard int COMMENT 'credit card'
+            
             //// BEGIN FORM
             writer.println("<div class='product-page-main-body'>");
             writer.println("<div class='purchase-form'>");
-            writer.println("<form action='./orderPush' method='post'>");
+            writer.println("<form action='./push' method='post'>");
             
             
             writer.println("<label for='cartList'>Cart Items</label><br>");
@@ -164,7 +178,7 @@ public class cart extends HttpServlet {
             writer.println("<br>     ");
             
             writer.println("<label for='shipingAddress'>Shipping Address</label><br>");
-            writer.println("<input type='text' id='lastName' name='lastName' required><br>");
+            writer.println("<input type='text' id='shippingAddress' name='shippingAddress' required><br>");
         
             
             writer.println("<label for='deliveryMethod'>Delivery method</label><br>");
@@ -182,16 +196,15 @@ public class cart extends HttpServlet {
         
         
         
-            writer.println("<button type='submit' value='Submit' class='button submit-btn'> Submit !</button>");
+            writer.println("<button type='submit' value='Submit' class='button submit-btn'> Place Order</button>");
         
             writer.println("</form>");
         
-            writer.println("   <a href='./data'>Submit the Form</a>");
+            
             writer.println("</div>");
             writer.println("</div>");
-        
-
-
+            
+           
 
 
           
