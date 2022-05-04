@@ -5,6 +5,7 @@
 We implemented a navigation bar at the top of the screen to navigate between pages. Clicking on the logo will send you to the home page of the site, where you can see,the full list of items, the users's last 5 orders from a database along with the ability to rate, a hero banner, the group of three that worked on it (Michael Wijangco, Becky Dinh, and Jules Labador).
 
 ## Requirements
+
 ##1. You want to use Java Servlet and MySQL database to generate the product information dynamically. Include the output of two servlets to create the homepage for your e-commerce site: the first servlet should handle the displaying of the list of products obtained from a backend database, and the second servlet should display the last 5 products that the user has ordered, additionally, the user should be able to directly provide a rating for each one of these orders. The rating functionality should be similar to the below image. You are also required to use servlet "include" feature to implement this requirement.
 
   To satisfy a user session, the default user "DefaultAndy" is logged into the page automatically (will change eventually). Using data about defaultAndy in the MySql tables, we display using the the cards.java and recents.java servlet. Recent.java implements a 5 star rating system (that visually always starts as 1 star) using the <input type='range'> model. The handling of pushing this rating to the backend orders table is via submit.java. The increments are in half-steps and are pushed to the database once the user clicks the 'send' button.
@@ -42,7 +43,7 @@ MySQL port: 4 + last four digits of any team member's ID
 Include the URL of your deployed website in the readme file of your submission
 
     This was not done/implemented by our team.
-    
+
 ## Group Members
 
 Michael Wijangco
