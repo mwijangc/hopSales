@@ -24,8 +24,27 @@ import java.util.Collections;
 
 import com.google.gson.Gson; 
 
+/* 
+*****
+Cart.java is also the checkout page. 
+If a user adds an item to the cart, they are sent here.
+If a user navigates directly to the cart they are also sent here.
 
-// the /push is put into the form action!
+It shows a users cart along with quantity,
+and provides access to the farm should they wish to checkout.
+*
+After building the initial blocks(the nav) the session is called,
+and an ArrayList<Integer> is formed/used to store the product ids of the cart.
+Sometimes, the cart is null/empty, so this page will behave differently (show nothing visually at the top)
+If an item was recently added to the cart, then this will be shown in text
+along with a light calculation of total price 
+(using Collections.frequency to multiply price*quantity and add to a total)
+
+The form pushes initially to formPusher.java
+
+*/
+
+
 @WebServlet(name = "cart", value = "/cart")
 public class cart extends HttpServlet {
 
@@ -92,6 +111,7 @@ public class cart extends HttpServlet {
             }
             if(f_id > 0)
             {
+                // might want to prettify it, but for current use kind of like it.
                 writer.println("<p> Cart is currently :"+ items +", recently added "+f_id+" </p>");
             }
             else{

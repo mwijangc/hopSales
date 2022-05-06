@@ -14,6 +14,18 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/* 
+*****
+Cards.java , the card servlet dynamically lists products based on the provided product_id.
+*
+!Starts by querying the backend for every single frog.
+rowCount is a counter variable(lowkey hardcoded) to make rows 5 each.
+The page is built dynamically with info from backend;
+**name, price, image_path(a path stored that is where images are stored)
+
+***Note that if your SQL server is not on, you'll get nulls/errors here and need to restart.
+*/
+
 @WebServlet(name = "card", value = "/card")
 public class cards extends HttpServlet {
 

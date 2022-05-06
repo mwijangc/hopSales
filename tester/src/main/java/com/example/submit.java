@@ -17,6 +17,20 @@ import java.sql.PreparedStatement;
 
 import java.sql.SQLException;
 
+/* 
+*****
+submit.java is called by recents to handle the rating system.
+*
+submit needs a better 'id' system for backend insertion .
+The session is important, as the currentUser is a parameter sent in.
+Might want to prettify/convert this into a modal rather than a whole page redirect.
+As for a clear usage, this rating system is called specifically when
+the Send button in recents.java is used.
+Future iteration might just send to the backend onChange/mouseEnd/mouseUp etc.
+The button solidifies/uses less resources for now.
+
+*/
+
 @WebServlet(name = "submit", value = "/submit")
 public class submit extends HttpServlet {
     

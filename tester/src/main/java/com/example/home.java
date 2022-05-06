@@ -15,6 +15,22 @@ import java.sql.Statement;
 
 import java.sql.SQLException;
 
+/* 
+*****
+Home.java is the home-entrypoint. It acts as the index.jsp (index.jsp just calls a request dispatcher)
+
+*
+home.java logs in a user (in the future there will be a login, for now defaultAndy is logged in and is fetched from the database when needed).
+RequestDispatcher starts to build the blocks :
+!nav is added,
+!card.java is called and dynamically shows the entire product list via the backend,
+!The user is welcomed, along with calling recent.java, which shows their last 5 orders(from a database,)
+*currently recents does not update/get updated when a user orders,
+!the static home is put in (our cards, a hero image)
+
+
+*/
+
 
 @WebServlet(name = "home", value = "/home")
 public class home extends HttpServlet {

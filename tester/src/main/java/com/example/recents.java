@@ -16,6 +16,23 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+/* 
+*****
+recents.java, the recent servlet displays the users last 5 orders from the backend,
+and allows for a star rating to be sent in to the backend(might want to remake component)
+**the star rating sql insertion is handled by the submit.java servlet.
+*
+! The recents info is pinged using the current sessions currentUser attribute
+** Doesnt nececssarily handle an empty/no user existing for now.
+! follows similar logic to displaying the products from card.java however
+doesn't allow for zooming. Also prompts for ratings.
+! Ratings will visually always be 1 star and can be dragged in 0.5
+increments to 5. This data is stored in the backend via submit.java
+!!The table is named orders
+
+
+*/
 @WebServlet(name = "recent", value = "/recent")
 public class recents extends HttpServlet {
     Connection con;

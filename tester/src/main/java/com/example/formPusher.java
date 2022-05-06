@@ -25,6 +25,21 @@ import java.util.UUID;
 
 import com.google.gson.Gson; 
 
+/* 
+*****
+formPusher.java, called primarily by cart.java's form,
+parses the form and inserts into the database with uuids that are randomly generated.
+*
+Honestly doGet isn't really called. Shouldnt be used usually.
+!formPusher includes orderDetails.java which summarizes an order visually
+! using a prepared statement we push the information into the backend
+!! Note some things are not fully fleshedout/checked due to a library probably being
+!! desired for the sensitive information. Otherwise data is checked on basis of data-type (numeric, text)
+!! Formatting is not hard coded/type-checked too much yet.
+
+
+*/
+
 // the /push is put into the form action!
 @WebServlet(name = "push", value = "/push")
 public class formPusher extends HttpServlet {

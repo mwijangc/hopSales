@@ -15,7 +15,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+/* 
+*****
+orderDetails.java, called/included by formPusher.java
+gives a summary of the users' recent order (mustve filled the form)
+*
+orderDetails is fairly similar to the cart page, just without the form.
+It puts the total price paid to indicate the users order went through.
+**Future iterations will more than likely want to actually check the SQL requests/actions
+sucessfully went through before displaying 'success'.
 
+*/
 @WebServlet(name = "orderPush", value = "/orderPush")
 public class orderDetails extends HttpServlet {
 
