@@ -58,7 +58,7 @@ public class cart extends HttpServlet {
         try{
             Class.forName(JDBC_DRIVER);
             // testpa is the database name!
-            con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", dbCredentials.USER , dbCredentials.PASS);
             
         }
         catch(ClassNotFoundException e){

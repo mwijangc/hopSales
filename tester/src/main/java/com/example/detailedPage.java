@@ -37,7 +37,7 @@ public class detailedPage extends HttpServlet {
         try{
             Class.forName(JDBC_DRIVER);
             // testpa is the database name!
-            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");         
+            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", dbCredentials.USER , dbCredentials.PASS);         
             stmt = con.createStatement();
             String sql = "SELECT * FROM frog_list WHERE id = '"+req.getParameter("param1")+"'";
             ResultSet rs = stmt.executeQuery(sql);

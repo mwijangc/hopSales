@@ -71,7 +71,7 @@ public class submit extends HttpServlet {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             // testpa is the database name!
-            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", dbCredentials.USER , dbCredentials.PASS);
             PreparedStatement stmt = con.prepareStatement("INSERT INTO orders VALUES (?,?,?,?)");
             // stmt.setInt(1, Integer.valueOf(req.getParameter("productID")));
             stmt.setInt(1, Integer.valueOf(req.getParameter("frog_id")));

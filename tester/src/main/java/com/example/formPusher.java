@@ -103,7 +103,7 @@ public class formPusher extends HttpServlet {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             // testpa is the database name!
-            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", "root", "mysql_554");
+            Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "testpa", dbCredentials.USER , dbCredentials.PASS);
             // https://stackoverflow.com/questions/24616174/how-to-convert-arraylist-to-json-object
             PreparedStatement ztmt = con.prepareStatement("INSERT INTO customerorders VALUES (?,?,?,?,?,?,?,?,?)");
             // stmt.setInt(1, Integer.valueOf(req.getParameter("productID")));
