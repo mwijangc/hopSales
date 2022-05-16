@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    
     <!-- jsp building homepage -->
     <!-- new index.jsp uses part servlet and static html for the most part now -->
+    <!-- script in head.html -->
     <%
     
     request.getRequestDispatcher("home").include(request,response);
@@ -36,17 +38,17 @@
         </div>
         <div class="team-block">            
     
-            <div class="profile-card">                
+            <div id="bk"  onmouseover="change_bk()" onmouseout="defaulted_bk()" class="profile-card">                
                 <img src="images/bock.svg">
-                <p> Becky Dinh, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
+                <p id= "bk_txt"> Becky Dinh, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
             </div>
-            <div class="profile-card">
+            <div id="julz"  onmouseover="change_julz()" onmouseout="defaulted_julz()" class="profile-card">
                 <img src="images/julz.svg">
-                <p> Jules Labador, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
+                <p id="julz_txt"> Jules Labador, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
             </div>
-            <div class="profile-card">
+            <div id = "mk" onmouseover="change_mk()" onmouseout="defaulted_mk()" class="profile-card">
                 <img src="images/mk.svg">
-                <p> Michael Wijangco, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
+                <p id = "mk_txt"> Michael Wijangco, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</p>
             </div> 
     
         </div>

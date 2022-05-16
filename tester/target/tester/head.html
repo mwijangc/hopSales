@@ -13,4 +13,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- javascript for index -->
+<script type="text/javascript">
+    function defaulted_mk()
+    {
+         var display = document.getElementById('mk_txt');
+        display.innerHTML = "";
+        display.innerHTML = "Michael Wijangco, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.";  
+    }
+
+    function defaulted_julz()
+    {
+         var display = document.getElementById('julz_txt');
+          display.innerHTML = "";
+          display.innerHTML = "Jules Labador, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.";  
+    }
+
+    function defaulted_bk()
+    {
+         var display = document.getElementById('bk_txt');
+          display.innerHTML = "";
+          display.innerHTML = "Becky Dinh, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.";  
+    }
+
+   function change_mk()
+    {
+      let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          var display = document.getElementById('mk_txt');
+            display.innerHTML = "";
+            display.innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "mk.txt", true)
+        xhttp.send()
+       
+    }
+
+    function change_julz()
+    {
+      let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          var display = document.getElementById('julz_txt');
+            display.innerHTML = "";
+            display.innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "julz.txt", true)
+        xhttp.send()
+       
+    }
+
+    function change_bk()
+    {
+      let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          var display = document.getElementById('bk_txt');
+            display.innerHTML = "";
+            display.innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "bk.txt", true)
+        xhttp.send()
+       
+    }
+          
+</script>
+
+
   </head>
