@@ -27,6 +27,12 @@ import com.google.gson.Gson;
 
 /* 
 *****
+UPDATE
+*****
+
+formpusher now FORWARDS to the details.jsp (keeping main input ability in the servlet, but the static html now just confirms an order has been pushed to the backend)
+
+*****
 formPusher.java, called primarily by cart.java's form,
 parses the form and inserts into the database with uuids that are randomly generated.
 *
@@ -53,14 +59,9 @@ public class formPusher extends HttpServlet {
     // happens when do get requests on  the servlett
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
-        writer.println("<html> <body>");
-        // String name = req.getParameter("name");
-        // String email = req.getParameter("email");
-        // writer.println("<p>Name: "+ name + " Email: " + email+"</p>");
-        writer.println(req.getQueryString());
-        writer.println("<h3> Order was submitted! </h3>");
-        writer.println("</body> </html> ");
+        RequestDispatcher rd = req.getRequestDispatcher("details.jsp");
+        rd.forward(req,resp);
+
     }
 
 
@@ -77,28 +78,9 @@ public class formPusher extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
-        writer.println("<html> ");
-        String cssLink=" <link rel='stylesheet' href='index.css'>";
-        writer.println("<head><title>Form</title>"+cssLink+"</head>");            
-        writer.println("<body>");
-        writer.println("<header>");
-        writer.println("<nav class='navbar' id='navBar'>");
-        writer.println("<a class ='navlink navbarLogo' href='/tester'>");
-        writer.println(" <img height = '25px' width='25px' src='images/fwog_logo.svg'> </a>");
-        writer.println("<a class='navlink' href='cart' >");
-        writer.println("Cart");
-        writer.println("</a>");
-                  
-        writer.println("</nav> </header>");
-        // String name = req.getParameter("name");
-        // String email = req.getParameter("email");
-        // writer.println("<p>Name: "+ name + " Email: " + email+"</p>");
-        RequestDispatcher rd = req.getRequestDispatcher("orderPush");
-        rd.include(req,resp);
-        // String product = req.getParameter("productID");
         
-        // writer.println("<p>"+product+"</p>");
+       
+    
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -141,10 +123,31 @@ public class formPusher extends HttpServlet {
             // writer.println("sql issue");
         }
     
+        // PrintWriter writer = resp.getWriter();
+        // writer.println("<html> ");
+        // String cssLink=" <link rel='stylesheet' href='index.css'>";
+        // writer.println("<head><title>Form</title>"+cssLink+"</head>");            
+        // writer.println("<body>");
+        // writer.println("<header>");
+        // writer.println("<nav class='navbar' id='navBar'>");
+        // writer.println("<a class ='navlink navbarLogo' href='/tester'>");
+        // writer.println(" <img height = '25px' width='25px' src='images/fwog_logo.svg'> </a>");
+        // writer.println("<a class='navlink' href='cart' >");
+        // writer.println("Cart");
+        // writer.println("</a>");
+                  
+        // writer.println("</nav> </header>");
 
+        // RequestDispatcher rd = req.getRequestDispatcher("orderPush");
+        // // RequestDispatcher rd = req.getRequestDispatcher("details.jsp");
+        // rd.include(req,resp);
 
-        writer.println("<h3> Order was submitted!</h3>");
-        writer.println("</body> </html> ");
+        // writer.println("<h3> Order was submitted!</h3>");
+        // writer.println("</body> </html> ");
+        RequestDispatcher rd = req.getRequestDispatcher("details.jsp");
+        rd.forward(req,resp);
+
+        
     }
 }
 

@@ -19,6 +19,14 @@ import java.sql.SQLException;
 
 /* 
 *****
+UPDATE (DEPRECATED)
+*****
+
+NO LONGER USED;
+REPLACED BY recentz.jsp!
+
+
+*****
 recents.java, the recent servlet displays the users last 5 orders from the backend,
 and allows for a star rating to be sent in to the backend(might want to remake component)
 **the star rating sql insertion is handled by the submit.java servlet.

@@ -17,6 +17,14 @@ import java.sql.SQLException;
 
 /* 
 *****
+UPDATE
+*****
+
+Home.java has been SPLIT into two, as its' original purpose WAS the main servlet and index.jsp was built/centered around it.
+Now index.jsp uses half and half
+
+
+*****
 Home.java is the home-entrypoint. It acts as the index.jsp (index.jsp just calls a request dispatcher)
 
 *
@@ -66,6 +74,9 @@ public class home extends HttpServlet {
         // default userlogin , replace with actual login eventually
         String username = "defaultAndy";
         session.setAttribute("currentUser", username);
+        // for use by jsps
+        session.setAttribute("dbUser", dbCredentials.USER);
+        session.setAttribute("dbPass", dbCredentials.PASS);
         try{
             
             
@@ -75,10 +86,15 @@ public class home extends HttpServlet {
             
             writer.println("<body>");
             // nav
-            rd = req.getRequestDispatcher("nav.html");            
+             rd = req.getRequestDispatcher("nav.html");            
             rd.include(req, resp);
             // products from database
             // send these to a servlet instead that produces product card html with the info
+
+            // TESTTESTER
+            // rd = req.getRequestDispatcher("recentz.jsp");
+            // rd.include(req, resp);
+
             rd = req.getRequestDispatcher("card");
             rd.include(req,resp);
             // need ratings with the orders
@@ -86,15 +102,15 @@ public class home extends HttpServlet {
             writer.println("<h3> Welcome "+session.getAttribute("currentUser")+" !</h3>");
             writer.println("<p> Would you like to rate any of your past 5 orders?</p>");
             //put users last 5 orders
-            rd = req.getRequestDispatcher("recent");
-            rd.include(req,resp);
+            // rd = req.getRequestDispatcher("recent");
+            // rd.include(req,resp);
 
             // main body(static)
-            rd= req.getRequestDispatcher("home.html");
-			rd.include(req, resp);
+            // rd= req.getRequestDispatcher("home.html");
+			// rd.include(req, resp);
 
             
-            writer.println("</body> </html> ");
+            // writer.println("</body> </html> ");
 
         }
         catch(Exception e){

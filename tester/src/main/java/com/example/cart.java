@@ -92,6 +92,10 @@ public class cart extends HttpServlet {
             {
                 f_id = Integer.parseInt(req.getParameter("prod"));
             }
+            else
+            {
+                writer.println("Cart is currently empty!");
+            }
             // if no cart
             //try to use arraylist for cart
             if(session.getAttribute("cart") == null && f_id !=0)
@@ -126,7 +130,7 @@ public class cart extends HttpServlet {
             writer.println("<div class='product-table'>");
             writer.println("<table>");
             double total = 0;
-            while(rs.next())
+            while(rs.next() && items != null)
             {
                 
                 if(items.contains(rs.getInt("id")))
